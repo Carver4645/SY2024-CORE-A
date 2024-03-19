@@ -4,6 +4,8 @@ package frc.robot.subsystems;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
+import com.fasterxml.jackson.databind.node.DoubleNode;
+
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -24,9 +26,9 @@ public class BackLimelight extends SubsystemBase {
         return (LimelightHelpers.getTA(Vision.BackLimelight.Name) > 0.1) ? true : false;
     }
 
-    public Optional<Pose3d> getTargetPoseRelative() {
+    public Optional<Double> getTargetHorizontalRotationalOffset() {
         try {
-            return Optional.of(LimelightHelpers.getTargetPose3d_RobotSpace(Vision.BackLimelight.Name));             
+            return Optional.of(LimelightHelpers.getTX(Vision.BackLimelight.Name));             
         } catch (Exception e) {
             return Optional.empty();
         }
@@ -42,6 +44,6 @@ public class BackLimelight extends SubsystemBase {
     * page 4.
     */
     public OptionalDouble determineTargetRotationalOffset() {
-        return OptionalDouble.of(getTargetPoseRelative().get().getRotation().getX());
+        return OptionalDouble.of(getTargetHorizontalRotationalOffset().get());
     }
 }

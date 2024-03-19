@@ -64,8 +64,8 @@ public class AdvanceToTarget extends Command {
 
         TrajectoryConfig trajectoryConfig =
             new TrajectoryConfig(
-                    Constants.Swerve.maxSpeed / 8,
-                    Constants.AutoConstants.kMaxAccelerationMetersPerSecondSquared / 8)
+                    Constants.Swerve.maxSpeed / 10,
+                    Constants.AutoConstants.kMaxAccelerationMetersPerSecondSquared / 10)
                 // Add kinematics to ensure max speed is actually obeyed
                 .setKinematics(Constants.Swerve.swerveKinematics);
     
